@@ -1,0 +1,412 @@
+/* Barbelo Agency, protótipo v0, cena 01 (abertura).
+   Cores e fontes são PROPOSTAS (logo, paleta e tipografia ainda não aprovadas): ver DESIGN.md.
+   Todo o resto lê estes tokens, então trocar a paleta é mexer só aqui. */
+
+@font-face{font-family:"Bricolage Grotesque";src:url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Geist";src:url("../fonts/geist-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+
+:root{
+  --ink:#0A0A0B;
+  --text:#EDEDEA;
+  --muted:#A6A6A2;
+  --line:rgba(237,237,234,.14);
+  --line-strong:rgba(237,237,234,.36);
+  --accent:#E5532D;
+  --ink-2:#101012;
+  --ink-3:#17171A;
+  --paper:#EDEDEA;
+  --glow-deep:#34120A;
+  --glow-light:#F4E9E0;
+  /* só o caleidoscópio usa azul e verde (pedido do Henrique, 18/10); o resto da página segue preto e laranja */
+  --kal-blue:#1F86FF;
+  --kal-green:#12C48B;
+
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Geist","Helvetica Neue",Arial,sans-serif;
+
+  --pad:clamp(20px,4vw,64px);
+  --nav-h:64px;
+  --ease-out:cubic-bezier(.22,.9,.3,1);
+  --ease-io:cubic-bezier(.45,0,.55,1);
+
+  /* escala de camadas */
+  --z-content:2;
+  --z-ticks:3;
+  --z-loader:5;
+  --z-nav:50;
+
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);-webkit-text-size-adjust:100%}
+html.is-loading{overflow:hidden}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--ink);color:var(--text);font:400 1rem/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* texto dividido: cada palavra/letra sobe de dentro de uma máscara */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em .06em .16em;margin:-.14em -.06em -.16em}
+.w--chars{padding-top:.26em;margin-top:-.26em}
+.c,.w__in{display:inline-block;will-change:transform}
+
+/* botão: um só rótulo ("Let's talk") para a mesma intenção, em toda a página */
+.btn{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:999px;background:var(--accent);color:var(--ink);font:600 .9375rem var(--body);text-decoration:none;white-space:nowrap;transition:transform .5s var(--ease-out)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+
+/* navegação */
+.nav{position:fixed;inset:0 0 auto 0;z-index:var(--z-nav);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
+.nav{transition:transform .6s var(--ease-io)}
+.nav.is-hidden{transform:translateY(-110%)}
+.nav__brand{font:800 1.375rem var(--display);letter-spacing:-.04em;text-decoration:none;transition:color .4s}
+.nav__links{display:flex;align-items:center;gap:clamp(16px,2.6vw,36px)}
+.nav__link{font:500 .9375rem var(--body);text-decoration:none;color:var(--muted);transition:color .4s}
+.nav__link:hover{color:var(--text)}
+/* idiomas: EN / PT (com a bandeira do Brasil) / ES, discretos, no canto superior direito */
+.nav__lang{display:flex;align-items:center;gap:0;margin-left:-.3em}   /* embaixo da marca (pedido do Henrique, 20/10); a margem alinha a primeira bandeira com o "B" */
+.nav__lang a{display:inline-flex;align-items:center;gap:4px;padding:.3em .45em;border-radius:99px;font:600 .625rem/1 var(--body);letter-spacing:.06em;color:var(--muted);opacity:.8;text-decoration:none;transition:color .35s}
+.nav__lang a:hover,.nav__lang a[aria-current="true"]{opacity:1}
+.nav__lang a:hover{color:var(--text)}
+.nav__lang a[aria-current="true"]{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1.5px;text-underline-offset:.4em}
+.nav__lang a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav__lang .flag{display:block;width:13px;height:9px;border-radius:1.5px;opacity:.92}
+.nav[data-theme="light"] .nav__lang a{color:rgba(10,10,11,.55)}
+.nav[data-theme="light"] .nav__lang a:hover,.nav[data-theme="light"] .nav__lang a[aria-current="true"]{color:var(--ink)}
+.nav[data-theme="light"] .nav__brand{color:var(--ink)}
+.nav[data-theme="light"] .nav__link{color:rgba(10,10,11,.7)}
+.nav[data-theme="light"] .nav__link:hover{color:var(--ink)}
+.btn--lg{height:56px;padding:0 30px;font-size:1.0625rem}
+.js .nav{opacity:0;visibility:hidden}
+
+/* ====== CENA 01: ABERTURA ====== */
+.hero{position:relative;height:220vh;height:220svh;background:var(--ink)}
+.hero__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+.hero__gl,.hero__poster{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* plano B: sem WebGL ou aparelho fraco, entra esta imagem estática */
+.hero__poster{opacity:0;background:
+  radial-gradient(70% 60% at 56% 38%,rgba(40,62,74,.55),rgba(18,28,36,.6) 55%,rgba(10,10,11,0) 90%),
+  var(--ink)}
+.no-gl .hero__poster{opacity:1}
+.no-gl .hero__gl{display:none}
+
+/* carregador: bolinha que vira o campo de luz */
+.loader{position:absolute;inset:0;z-index:var(--z-loader);display:none;place-items:center;background:var(--ink)}
+.js .loader{display:grid}
+.loader.is-done{display:none!important}
+.loader__stage{position:relative;width:18px;height:18px}
+.loader__dot,.loader__drop{position:absolute;border-radius:50%;background:var(--accent);will-change:transform}
+.loader__dot{inset:0}
+.loader__drop--a{width:7px;height:7px;left:5px;top:5px}
+.loader__drop--b{width:5px;height:5px;left:6px;top:6px}
+.loader__count{position:absolute;left:var(--pad);bottom:calc(clamp(20px,4svh,44px) + env(safe-area-inset-bottom,0px));font:700 clamp(1.25rem,2vw,1.75rem)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--text)}
+.loader__count{display:none}   /* sem o contador de 0 a 100 (pedido do Henrique, 20/10): só a bolinha e a escolha do idioma */
+/* escolha do idioma na entrada (20/10): embaixo da bolinha; o site só abre depois do clique */
+.loader__langs{position:absolute;left:0;right:0;top:calc(50% + 40px);display:flex;justify-content:center;flex-wrap:wrap;padding:0 var(--pad)}
+.js .loader__langs{visibility:hidden}
+.loader__lang{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:.5em .6em;font:500 .9375rem/1 var(--body);color:var(--muted);text-decoration:none;transition:color .35s}
+.loader__lang span{text-decoration:underline 1.5px transparent;text-underline-offset:.4em;transition:text-decoration-color .35s}
+.loader__lang:hover,.loader__lang:focus-visible{color:var(--text)}
+.loader__lang:hover span,.loader__lang:focus-visible span{text-decoration-color:var(--accent)}
+.loader__lang .flag{display:block;width:18px;height:13px;border-radius:2px}
+
+.hero__content{position:absolute;left:0;right:0;bottom:0;z-index:var(--z-content);padding:0 var(--pad) calc(clamp(20px,4svh,44px) + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:clamp(10px,2.2svh,26px);pointer-events:none}
+.js:not(.is-ready) .hero__content{visibility:hidden}
+.hero__phrases{display:grid;max-width:28ch}
+.phrase{grid-area:1/1;visibility:hidden;font:600 clamp(1.4rem,2.6vw,2.7rem)/1.08 var(--display);letter-spacing:-.025em}
+.phrase.is-active{visibility:visible}
+.hero__title{display:flex;flex-direction:column;width:max-content;max-width:100%;position:relative;z-index:2}
+/* --hb = tamanho da marca; o "Agency" fica embaixo do final de "Barbelo" (b-e-l-o), alinhado à direita com o último o */
+.hero{--hb:min(21vw,26svh)}   /* tamanho da logo: cabe inteira (Barbelo + Agency) em janelas baixas, sem rolar */
+.hero__brand{display:block;font:800 var(--hb)/.8 var(--display);letter-spacing:-.055em;margin-left:-.04em}
+.hero__agency{display:block;align-self:flex-end;margin-top:.06em;margin-right:calc(var(--hb)*-.02);font:800 clamp(1.15rem,3.5vw,3.7rem)/1 var(--display);letter-spacing:-.04em;color:var(--accent)}   /* menor e logo abaixo do final de "Barbelo", terminando junto do último o */
+
+/* traços de tempo: mostram qual frase está no ar; tocar troca a frase */
+.hero__ticks{position:absolute;right:var(--pad);bottom:calc(clamp(14px,3svh,36px) + env(safe-area-inset-bottom,0px));z-index:var(--z-ticks);display:flex;gap:6px}
+.js:not(.is-ready) .hero__ticks{visibility:hidden}
+.tick{position:relative;width:clamp(30px,4.4vw,60px);height:44px;padding:0;border:0;background:none;cursor:pointer}
+.tick::before,.tick i{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px}
+.tick::before{background:var(--line-strong)}
+.tick i{background:var(--accent);transform:scaleX(0);transform-origin:left center}
+.tick.is-done i{transform:scaleX(1)}
+
+.proto-note{max-width:46ch;color:var(--muted);font-size:1.0625rem}
+body[data-proto="off"] .proto-note{display:none}
+
+/* ===== componente: celular (moldura de aparelho; a tela recebe vídeo, imagem ou conteúdo ilustrativo) ===== */
+.phone{--pw:clamp(120px,14vw,210px);position:relative;flex:0 0 auto;width:var(--pw);aspect-ratio:390/844;border-radius:14%/6.5%;background:#1B1B1E;padding:2.4%;box-shadow:0 0 0 1px rgba(237,237,234,.16),0 36px 70px rgba(0,0,0,.5)}
+.phone::before{content:"";position:absolute;z-index:3;top:2.8%;left:50%;width:28%;height:2.1%;transform:translateX(-50%);background:#0A0A0B;border-radius:99px}
+.phone__screen{position:relative;width:100%;height:100%;border-radius:12%/5.6%;overflow:hidden;background:var(--ink)}
+.phone__screen>img,.phone__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.layer{position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease-io)}
+.layer.is-on{opacity:1}
+/* celulares e capturas dos sites reais: link para o site oficial; o do livro também abre ao vivo dentro do celular */
+.site-link{position:relative;display:block;color:inherit;text-decoration:none}
+.site-link:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:14px}
+.stage__desk .site-link{position:absolute;inset:0}
+.vpanel__phones .site-link,.vpanel__phones .live{flex:0 0 auto}
+/* etiqueta discreta: vidro escuro com fio claro, texto do site e uma seta na cor de destaque (nada de faixa colorida) */
+.link-hint{position:absolute;z-index:4;left:50%;bottom:7%;transform:translate(-50%,6px);display:inline-flex;align-items:center;gap:.5em;padding:.6em .95em;border-radius:99px;background:rgba(10,10,11,.66);box-shadow:inset 0 0 0 1px rgba(237,237,234,.22);color:var(--text);font:500 .72rem/1 var(--body);letter-spacing:.01em;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .45s var(--ease-io),transform .65s var(--ease-out)}
+.link-hint::after{content:"\2197";color:var(--accent);font-size:.95em;line-height:1}
+.hint-tap{display:none}
+.stage__desk .link-hint{bottom:6%}
+.site-link--s .link-hint{display:none}
+.vpanel .link-hint{font-size:.62rem;padding:.55em .8em}
+@media (hover:hover){
+  .site-link--phone,.vpanel__phones .site-link{transition:transform .6s var(--ease-out)}
+  .site-link--phone:hover,.vpanel__phones .site-link:hover{transform:translateY(-6px)}
+  .site-link:hover .link-hint,.site-link:focus-visible .link-hint,.live__hit:hover .link-hint,.live__hit:focus-visible .link-hint{opacity:1;transform:translate(-50%,0)}
+}
+@media (hover:none){
+  .hint-click{display:none}.hint-tap{display:inline}
+  .live__hit .link-hint{opacity:.92;transform:translate(-50%,0)}
+  .vpanel .link-hint{width:26px;height:26px;padding:0;gap:0;justify-content:center;bottom:6%}
+  .vpanel .link-hint span{display:none}
+}
+/* modo ao vivo: toque no celular e o site oficial abre dentro dele, que vem um pouco para a frente; rola para cima e para baixo ali dentro */
+.live{position:relative;display:block;z-index:1}
+.live .phone{transition:transform .8s var(--ease-out);transform-origin:50% 50%;will-change:auto}
+.live__hit{position:absolute;inset:0;z-index:5;padding:0;border:0;background:none;border-radius:14%/6.5%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.live__hit:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.live__frame{position:absolute;left:0;top:0;z-index:2;border:0;background:var(--ink);transform-origin:0 0;opacity:0;transition:opacity .6s var(--ease-io)}
+.live__frame.is-ready{opacity:1}
+.live.is-open{z-index:30}
+.live.is-open .phone{transform:translate(var(--lx,0px),var(--ly,0px)) scale(var(--lz,1.12));will-change:transform}
+.live.is-open .live__hit{pointer-events:none}
+.live.is-open .live__hit .link-hint{opacity:0}
+.project.has-live .stage__desk,.project.has-live .project__info{opacity:.28;transition:opacity .6s var(--ease-io)}
+.vpanel.has-live .vpanel__text,.vpanel.has-live .vpanel__phones>:not(.live){opacity:.18;transition:opacity .6s var(--ease-io)}
+.live-bar{position:fixed;z-index:60;left:50%;bottom:calc(52px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;gap:8px}
+.live-bar[hidden]{display:none}
+.live-chip{display:inline-flex;align-items:center;padding:.8em 1.15em;border:0;border-radius:99px;background:rgba(10,10,11,.78);box-shadow:inset 0 0 0 1px rgba(237,237,234,.26);color:var(--text);font:500 .8rem/1 var(--body);letter-spacing:.01em;cursor:pointer;text-decoration:none;white-space:nowrap}
+.live-chip:hover{box-shadow:inset 0 0 0 1px rgba(237,237,234,.5)}
+.live-chip:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.live-bar:not([hidden]){animation:liveBarIn .5s var(--ease-out)}
+@keyframes liveBarIn{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+.is-reduced .live .phone,.is-reduced .live__frame{transition:none}
+.phone__veil{position:absolute;inset:0;z-index:2;background:#F6F1EB;opacity:0;pointer-events:none}
+.phone__veil.is-flash{animation:veil .9s var(--ease-io)}
+@keyframes veil{0%{opacity:0}35%{opacity:.55}100%{opacity:0}}
+
+/* conteúdo ilustrativo dentro das telas */
+.creative{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:calc(var(--pw)*.11) calc(var(--pw)*.09) calc(var(--pw)*.1);color:var(--ink)}
+.creative--ad{background:radial-gradient(120% 80% at 75% 0%,#F77B52 0%,var(--accent) 48%,#B83A1A 100%)}
+.creative--flat{background:var(--ink);color:var(--text)}
+.creative--flat .creative__cta{background:var(--accent);color:var(--ink)}
+.creative__tag{font:600 calc(var(--pw)*.05)/1 var(--body);opacity:.8}
+.creative__big{font:800 calc(var(--pw)*.15)/.95 var(--display);letter-spacing:-.04em}
+.creative__cta{align-self:flex-start;padding:calc(var(--pw)*.04) calc(var(--pw)*.08);border-radius:999px;background:var(--ink);color:var(--text);font:600 calc(var(--pw)*.05)/1 var(--body)}
+.creative--reel{background:var(--ink-3);color:var(--text)}
+.creative__bar{display:block;height:2px;background:rgba(237,237,234,.25)}
+.creative__bar i{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center;animation:reelbar 6s linear infinite;animation-play-state:paused}
+.creative__handle{font:600 calc(var(--pw)*.052)/1 var(--body);opacity:.8}
+.creative--rec{background:#0E0E10;color:var(--text)}
+.creative__rec{display:flex;align-items:center;gap:calc(var(--pw)*.035);font:700 calc(var(--pw)*.058)/1 var(--body)}
+.creative__rec b{display:block;width:calc(var(--pw)*.05);height:calc(var(--pw)*.05);border-radius:50%;background:var(--accent);animation:blink 1.4s steps(2,jump-none) infinite;animation-play-state:paused}
+.creative__time{font:300 calc(var(--pw)*.17)/1 var(--body);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.is-live .creative__bar i,.is-live .creative__rec b{animation-play-state:running}
+@keyframes reelbar{to{transform:scaleX(1)}}
+@keyframes blink{50%{opacity:.2}}
+
+.chat{display:flex;flex-direction:column;gap:calc(var(--pw)*.04);padding:calc(var(--pw)*.17) calc(var(--pw)*.07) calc(var(--pw)*.07);background:#0F0F11;color:var(--text)}
+.chat__head{display:flex;align-items:center;gap:calc(var(--pw)*.04);margin-bottom:calc(var(--pw)*.05);font:600 calc(var(--pw)*.052)/1 var(--body)}
+.chat__head i{display:block;width:calc(var(--pw)*.1);height:calc(var(--pw)*.1);border-radius:50%;background:var(--line-strong)}
+.bubble{max-width:84%;padding:calc(var(--pw)*.045) calc(var(--pw)*.06);border-radius:calc(var(--pw)*.07);font:400 calc(var(--pw)*.056)/1.25 var(--body)}
+.bubble--in{align-self:flex-start;background:#26262A}
+.bubble--out{align-self:flex-end;background:var(--accent);color:var(--ink)}
+
+/* marca de conteúdo ilustrativo (só no protótipo; some com data-proto="off") */
+.ilu{position:absolute;z-index:4;top:12px;left:12px;padding:2px 10px;border:1px dashed var(--line-strong);border-radius:999px;background:rgba(10,10,11,.55);font:500 .6875rem/1.5 var(--body);color:var(--muted)}
+.vpanel--paper .ilu{color:rgba(10,10,11,.65);border-color:rgba(10,10,11,.3);background:rgba(237,237,234,.7)}
+.vpanel--accent .ilu{color:var(--ink);border-color:rgba(10,10,11,.4);background:transparent}
+body[data-proto="off"] .ilu{display:none}
+
+/* ===== CENAS 02 e 03: ponte e projetos (trilha horizontal, referência Koto) ===== */
+.work{position:relative;background:var(--ink-2)}
+.work__intro{display:flex;flex-direction:column;gap:1.5rem;padding:calc(var(--nav-h) + 12svh) var(--pad) clamp(28px,6svh,64px);max-width:calc(56rem + 2*var(--pad))}
+.work__title{font:800 clamp(3.1rem,10.6vw,10.8rem)/.88 var(--display);letter-spacing:-.05em}
+.work__title--end{font-size:clamp(2.6rem,7vw,7rem)}
+.work__sub{max-width:34ch;color:var(--muted);font-size:clamp(1rem,1.3vw,1.25rem)}
+/* carrossel: rolagem lateral nativa com encaixe; a rolagem vertical passa direto para a página */
+.work__pin{position:relative;overflow-x:clip;padding-bottom:clamp(40px,9svh,96px)}
+.work__track{position:relative;display:flex;align-items:stretch;gap:clamp(20px,3.5vw,64px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0 var(--pad);padding:0 var(--pad);overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.work__track::-webkit-scrollbar{display:none}
+.work__track.is-auto{scroll-snap-type:none}
+.work__track.is-drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.work__track.is-drag a,.work__track.is-drag button{pointer-events:none}
+.work__track>*{scroll-snap-align:start}
+.work__end{flex:0 0 auto;width:min(84vw,34rem);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1.75rem;padding-right:var(--pad)}
+.work__nav{display:flex;align-items:center;gap:clamp(12px,2vw,24px);padding:clamp(18px,3svh,32px) var(--pad) 0}
+.work__progress{flex:1 1 auto;height:2px;background:var(--line)}
+.work__progress span{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+
+.project{flex:0 0 auto;width:min(68vw,50rem);display:flex;flex-direction:column;justify-content:center;gap:clamp(16px,3.2svh,36px)}
+.stage{position:relative;flex:0 0 auto;width:100%;height:min(62svh,40rem);--sh:min(62svh,40rem)}
+.stage__phone{position:absolute;left:6%;bottom:0;z-index:2}
+.stage__phone .phone{--pw:calc(var(--sh)*.45)}
+.stage__desk{position:absolute;right:0;top:7%;width:66%;aspect-ratio:1440/900;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.stage__desk img{position:absolute;left:-4%;top:0;width:108%;height:100%;object-fit:cover;display:block}
+.stage--slot .stage__phone{left:auto;right:10%}
+.slot__word{position:absolute;left:-.04em;top:4%;font:800 clamp(8rem,24vw,22rem)/.8 var(--display);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(237,237,234,.22);pointer-events:none;user-select:none}
+.stage .ilu{top:0;left:0}
+.project__info{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:.75rem 2.5rem;align-items:end}
+.project__title{font:800 clamp(1.9rem,4.4vw,4.2rem)/.92 var(--display);letter-spacing:-.045em}
+.project__meta{display:flex;flex-direction:column;gap:.6rem}
+.project__text{color:var(--muted);font-size:clamp(.9375rem,1.15vw,1.0625rem);max-width:40ch}
+.project__link{width:max-content;color:var(--text);font-size:.9375rem;text-underline-offset:.25em}
+.project__actions{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.25rem}
+.sound{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--text);font:500 .875rem var(--body);cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+.sound:hover{border-color:var(--text)}
+.sound[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.phone--rec::before{display:none}
+
+/* ===== CENA 04: serviços (única seção clara; a bolinha da abertura volta e vira a página) ===== */
+.what{position:relative;background:var(--ink-2);color:var(--ink)}
+.what__pin{position:relative;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.what__dot{position:absolute;left:50%;top:50%;width:145vmax;height:145vmax;margin:-72.5vmax 0 0 -72.5vmax;border-radius:50%;background:var(--paper);transform:scale(0);will-change:transform}
+.what__ring{position:absolute;right:-12vmin;top:50%;width:min(88vmin,920px);aspect-ratio:1;transform:translateY(-50%) rotate(-90deg);opacity:0;pointer-events:none}
+.what__ring circle{fill:none;stroke-width:.35}
+.what__ring .track{stroke:rgba(10,10,11,.14)}
+.what__ring .bar{stroke:var(--accent);stroke-dasharray:1;stroke-dashoffset:1}
+.say{position:absolute;inset:0;z-index:1;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:center;gap:clamp(1.25rem,3vw,2.5rem);visibility:hidden}
+.say--in .say__title{margin-left:clamp(0px,11vw,13rem)}
+.say--lead{gap:clamp(.9rem,1.8vw,1.5rem)}
+.say--lead .say__sub{max-width:46ch}
+.say--lead .say__title{max-width:14ch;font-size:clamp(2.6rem,7.6vw,8.2rem)}
+.say__title{font:800 clamp(2.9rem,9.4vw,10.2rem)/.92 var(--display);letter-spacing:-.05em;max-width:13ch}
+.say__sub{max-width:36ch;font-size:clamp(1.0625rem,1.5vw,1.4rem);color:rgba(10,10,11,.7)}
+.hl{font-style:normal;color:var(--accent)}
+.process__title,.work__title,.voices__title,.talk__title,.say__title,.vpanel__big{text-wrap:balance}
+
+/* ===== CENA 05: processo ===== */
+.process{background:var(--ink-3);padding:clamp(96px,18svh,220px) var(--pad) clamp(96px,16svh,200px);overflow:hidden;overflow:clip}
+.process__title{font:800 clamp(3rem,9.2vw,9.4rem)/.9 var(--display);letter-spacing:-.05em;max-width:11ch}
+/* em português e espanhol o título é bem mais longo: no computador ficava em 4 linhas e empurrava os textos das etapas para fora da tela (20/10) */
+@media (min-width:701px){:lang(pt) .process__title,:lang(es) .process__title{font-size:clamp(3rem,6.4vw,6.6rem);max-width:15ch}}
+.process__steps{position:relative;list-style:none;margin:clamp(64px,12svh,140px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 clamp(18px,2.4vw,44px)}
+.process__line{position:absolute;left:0;right:0;top:0;height:2px;background:var(--line)}
+.process__fill{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left center;will-change:transform}
+/* cabeça de luz e brilho de fechamento: só transform e opacity (a posição vem do JS) */
+.process__head,.process__sweep{position:absolute;pointer-events:none;opacity:0;will-change:transform,opacity}
+.process__head{left:0;top:1px;width:0;height:0}
+.process__head::before{content:"";position:absolute;left:-70px;top:-14px;width:140px;height:28px;background:radial-gradient(closest-side,rgba(244,233,224,.5),rgba(229,83,45,.34) 40%,rgba(229,83,45,0))}
+.process__head::after{content:"";position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--glow-light)}
+.process__sweep{left:0;top:-4px;width:260px;height:10px;background:radial-gradient(closest-side,rgba(244,233,224,.78),rgba(229,83,45,.3) 50%,rgba(229,83,45,0))}
+.process.is-pinned{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.step{position:relative;padding-top:1.9rem}
+.step__node{position:absolute;top:-6px;left:0;width:14px;height:14px;border-radius:50%;background:var(--ink-3);border:2px solid var(--line-strong)}
+.step__node::before{content:"";position:absolute;inset:-2px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .55s var(--ease-out)}
+.step__node::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--accent);opacity:0}
+.step.is-on .step__node::before{transform:scale(1)}
+.step.is-on .step__node::after{animation:stepRing 1.1s var(--ease-out) .05s}
+@keyframes stepRing{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(2.9)}}
+.step h3{font:800 clamp(1.7rem,3.3vw,3.2rem)/1 var(--display);letter-spacing:-.045em;color:var(--muted);transition:color .6s,opacity .6s}
+.step.is-on h3{color:var(--text)}
+.step.is-on:not(.is-now) h3{opacity:.72}
+.process__steps.is-done .step h3{opacity:1}
+.step p{margin-top:.8rem;max-width:30ch;color:var(--muted);font-size:clamp(.9375rem,1.1vw,1.0625rem)}
+
+/* ===== CENA 06: faixa de celulares (referência Moha: painéis que deslizam, centro de frente, vizinhos inclinados) ===== */
+.voices{--vpw:min(86vw,62rem);position:relative;background:var(--ink)}
+.voices__pin{position:relative;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.voices__title{position:absolute;z-index:2;top:calc(var(--nav-h) + 2svh);left:var(--pad);font:800 clamp(2.4rem,6.4vw,6rem)/.9 var(--display);letter-spacing:-.05em;pointer-events:none}
+.voices__track{position:relative;display:flex;align-items:center;gap:clamp(20px,3vw,52px);width:max-content;margin-top:10svh;padding:0 calc((100vw - var(--vpw))/2);will-change:transform}
+.vpanel{position:relative;flex:0 0 auto;width:var(--vpw);height:min(62svh,34rem);border-radius:24px;display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);align-items:center;gap:clamp(12px,2vw,32px);padding:clamp(18px,3vw,44px);overflow:hidden;will-change:transform,opacity}
+.vpanel--ember{background:radial-gradient(90% 90% at 18% 15%,#5E1F0F 0%,#34120A 52%,#170A06 100%);color:var(--text)}
+.vpanel--paper{background:var(--paper);color:var(--ink)}
+.vpanel--accent{background:var(--accent);color:var(--ink)}
+.vpanel--ink{background:var(--ink-3);color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}
+.vpanel__phones{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.3vw,22px);height:100%}
+.phone--s{--pw:clamp(86px,9vw,140px)}
+.phone--m{--pw:clamp(108px,11.6vw,180px)}
+.phone--l{--pw:clamp(124px,13.2vw,204px)}
+.phone--low{transform:translateY(9%)}
+.vpanel--four{grid-template-columns:minmax(0,1.62fr) minmax(0,.68fr)}
+.vpanel--four .vpanel__phones{gap:clamp(6px,1vw,16px)}
+.vpanel--four .phone--s{--pw:clamp(64px,6.9vw,110px)}
+.vpanel--four .phone--m{--pw:clamp(82px,8.6vw,138px)}
+.vpanel--four .phone--l{--pw:clamp(96px,10.2vw,162px)}
+.vpanel__text{display:flex;flex-direction:column;gap:1rem}
+.vpanel__big{font:800 clamp(1.45rem,2.7vw,2.7rem)/1.02 var(--display);letter-spacing:-.04em}
+.vpanel__by{font-size:.9375rem;opacity:.72}
+
+/* ===== CENA 07: contato ("Let's talk" vertical, referência Playground) ===== */
+.talk{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:var(--ink);color:var(--ink);display:flex;flex-direction:column}
+.talk__dot{position:absolute;left:50%;top:50%;width:145vmax;height:145vmax;margin:-72.5vmax 0 0 -72.5vmax;border-radius:50%;background:var(--accent);transform:scale(0);will-change:transform}
+.talk__inner{position:relative;flex:1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--pad);padding:calc(var(--nav-h) + 4svh) var(--pad) 0}
+.talk__copy{align-self:end;max-width:38rem;padding-bottom:clamp(64px,16svh,180px)}   /* texto mais alto (pedido do Henrique, 20/10) */
+.talk__title{font:800 clamp(2.5rem,5.6vw,5.8rem)/.94 var(--display);letter-spacing:-.045em;margin-bottom:1.25rem}
+.talk__sub{font:800 clamp(1.5rem,2.5vw,2.6rem)/1.05 var(--display);letter-spacing:-.035em;max-width:24ch;text-wrap:balance}
+.talk__note{margin-top:1.25rem;color:rgba(10,10,11,.72)}
+/* botão do rodapé (20/10): o mesmo botão do menu, em preto com letra laranja, no canto inferior direito */
+.btn--ink{background:var(--ink);color:var(--accent)}
+.btn--ink:focus-visible{outline-color:var(--ink)}
+.btn--wa{gap:.55em;padding-left:16px}
+.btn__wa{flex:none;width:1.45em;height:1.45em;color:#25D366}   /* verde do WhatsApp, para ser reconhecido de longe */
+.talk__word{align-self:stretch;display:flex;align-items:center;writing-mode:vertical-rl;transform:rotate(180deg);font:800 min(15.5svh,25vw)/.84 var(--display);letter-spacing:-.05em;color:var(--ink);text-decoration:none;white-space:nowrap;cursor:pointer}
+:lang(pt) .talk__word{font-size:min(10.4svh,17vw)}   /* "Vamos conversar" tem 15 letras (o original tinha 10): menor para caber em uma linha vertical */
+.lt{display:inline-block;will-change:transform}
+.lt--sp{inline-size:.34em}   /* espaço entre as palavras da palavra vertical (inline-size = altura em texto vertical) */
+.talk__foot{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem var(--pad) calc(1.25rem + env(safe-area-inset-bottom,0px))}
+.talk__legal{font-size:.875rem;opacity:.75}
+.talk__foot{flex-direction:row-reverse}   /* botão à esquerda, © à direita, em todos os idiomas (pedido do Henrique, 20/10) */
+
+@media (max-width:700px){
+  .nav__link{display:none}
+  .hero__phrases{max-width:17ch}
+  .hero__ticks{bottom:auto;top:calc(var(--nav-h) + 6px);right:var(--pad)}
+  .project{width:78vw}
+  .stage{height:min(50svh,30rem);--sh:min(50svh,30rem)}
+  .stage__phone{left:2%}
+  .stage__phone .phone{--pw:calc(var(--sh)*.44)}
+  .stage__desk{width:72%;top:10%;right:-4%}
+  .stage--slot .stage__phone{right:6%}
+  .project__info{grid-template-columns:1fr}
+  .voices{--vpw:84vw}
+  .vpanel{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;height:min(74svh,38rem);padding:18px}
+  .vpanel__phones{height:auto}
+  .phone--s{--pw:68px}.phone--m{--pw:88px}.phone--l{--pw:104px}
+  .vpanel--four{grid-template-columns:1fr}
+  .vpanel--four .vpanel__phones{gap:6px}
+  .vpanel--four .phone--s{--pw:54px}.vpanel--four .phone--m{--pw:68px}.vpanel--four .phone--l{--pw:84px}
+  .vpanel__big{font-size:1.4rem}
+  .process__steps{grid-template-columns:1fr;gap:2.25rem 0;padding-left:1.75rem}
+  .process__line{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .process__fill{transform:scaleY(0);transform-origin:top center}
+  .process__head{left:1px;top:0}
+  .process__head::before{left:-14px;top:-70px;width:28px;height:140px}
+  .process__sweep{left:-4px;top:0;width:10px;height:260px}
+  .step{padding-top:0}
+  .step__node{top:.42rem;left:-1.75rem}
+  .talk__word{font-size:min(15.5svh,30vw)}
+}
+
+/* menos movimento: tudo aparece inteiro e parado */
+.is-reduced .hero{height:100vh;height:100svh}
+.is-reduced .hero__content,.is-reduced .hero__ticks{visibility:visible}
+.is-reduced .nav{opacity:1;visibility:visible}
+.is-reduced .loader{display:none}
+.is-reduced .loader.is-choosing{display:grid}
+.is-reduced .loader__langs{visibility:visible}
+.is-reduced .project{height:auto;padding:0}
+.is-reduced .what{background:var(--paper)}
+.is-reduced .what__pin{height:auto;display:block;padding:calc(var(--nav-h) + 6svh) var(--pad) 4svh}
+.is-reduced .what__dot,.is-reduced .what__ring{display:none}
+.is-reduced .say{position:static;visibility:visible;padding:0 0 clamp(32px,8svh,72px)}
+.is-reduced .step h3{color:var(--text)}
+.is-reduced .process__fill{transform:none}
+.is-reduced .step__node::before{transform:scale(1);transition:none}
+.is-reduced .process__head,.is-reduced .process__sweep{display:none}
+.is-reduced .voices__pin{height:auto;overflow-x:auto;display:block;padding:calc(var(--nav-h) + 16svh) 0 6svh}
+.is-reduced .voices__track{margin-top:0;padding:0 var(--pad)}
+.is-reduced .talk__dot{transform:scale(1)}
+.is-reduced .sound{display:none}
+@media (prefers-reduced-motion:reduce){
+  .btn{transition:none}
+  .creative__bar i,.creative__rec b{animation:none}
+}
