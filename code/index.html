@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbelo Agency | Creative Digital Solutions for Business Growth</title>
+<meta name="description" content="Barbelo Agency builds websites, ads and content that bring the right people to your business.">
+<!--HREFLANG-->
+    <link rel="canonical" href="https://barbeloagency.com/">
+<link rel="alternate" hreflang="en" href="https://barbeloagency.com/">
+<link rel="alternate" hreflang="pt-BR" href="https://barbeloagency.com/pt/">
+<link rel="alternate" hreflang="es" href="https://barbeloagency.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://barbeloagency.com/">
+    <!--/HREFLANG-->
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" href="data:,">
+<script>document.documentElement.classList.add('js','is-loading')</script>
+<link rel="preload" href="fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=73">
+</head>
+<body data-proto="on">
+
+<!-- PROTÓTIPO v0. Marca provisória em texto (logo ainda não existe). Todo texto visível tem data-i18n
+     (dicionário em locales/en.js). Conteúdo marcado com data-ilustrativo / .ilu é ILUSTRATIVO (autorizado
+     pelo Henrique em 18/10 só para a estrutura) e precisa ser trocado pelo material real antes de publicar.
+     .proto-note e .ilu somem com data-proto="off" no <body>. -->
+
+<header class="nav" id="nav" data-theme="dark">
+  <a class="nav__brand" href="#top" data-scroll-to="#top" data-i18n="nav.brand">Barbelo</a>
+  <nav class="nav__links" aria-label="Main">
+    <a class="nav__link" href="#work" data-scroll-to="#work" data-i18n="nav.work">Work</a>
+    <a class="nav__link" href="#what" data-scroll-to="#what" data-i18n="nav.what">What We Do</a>
+    <a class="btn" href="#talk" data-scroll-to="#talk" data-contact data-i18n="nav.talk">Let’s Talk</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- CENA 01: abertura. Referência OKKAPI (carregamento + transição caleidoscópica), em ritmo mais lento. -->
+  <section class="hero" id="top" aria-label="Barbelo Agency">
+    <div class="hero__pin">
+      <div class="hero__poster" aria-hidden="true"></div>
+      <canvas class="hero__gl" id="gl" aria-hidden="true"></canvas>
+
+      <div class="loader" id="loader">
+        <div class="loader__stage" aria-hidden="true">
+          <span class="loader__drop loader__drop--a"></span>
+          <span class="loader__drop loader__drop--b"></span>
+          <span class="loader__dot" id="dot"></span>
+        </div>
+        <span class="loader__count" id="count" aria-hidden="true">000</span>
+        <!-- escolha do idioma na entrada (pedido do Henrique, 20/10): o site só abre depois do clique; links gerados por gerar-idiomas.py -->
+        <!--LOADERLANG-->
+    <div class="loader__langs" id="loaderLangs" role="group" aria-label="Language">
+          <a class="loader__lang" href="./" data-lang="en" lang="en" hreflang="en"><svg class="flag" viewBox="0 0 20 14" width="16" height="11" aria-hidden="true" focusable="false"><clipPath id="flag-us"><rect width="20" height="14" rx="2"/></clipPath><g clip-path="url(#flag-us)"><rect width="20" height="14" fill="#FFFFFF"/><g fill="#B22234"><rect y="0.000" width="20" height="1.077"/><rect y="2.154" width="20" height="1.077"/><rect y="4.308" width="20" height="1.077"/><rect y="6.462" width="20" height="1.077"/><rect y="8.615" width="20" height="1.077"/><rect y="10.769" width="20" height="1.077"/><rect y="12.923" width="20" height="1.077"/></g><rect width="8" height="7.538" fill="#3C3B6E"/><g fill="#FFFFFF"><circle cx="1.3" cy="1.25" r=".38"/><circle cx="3.1" cy="1.25" r=".38"/><circle cx="4.9" cy="1.25" r=".38"/><circle cx="6.7" cy="1.25" r=".38"/><circle cx="1.3" cy="2.95" r=".38"/><circle cx="3.1" cy="2.95" r=".38"/><circle cx="4.9" cy="2.95" r=".38"/><circle cx="6.7" cy="2.95" r=".38"/><circle cx="1.3" cy="4.65" r=".38"/><circle cx="3.1" cy="4.65" r=".38"/><circle cx="4.9" cy="4.65" r=".38"/><circle cx="6.7" cy="4.65" r=".38"/><circle cx="1.3" cy="6.35" r=".38"/><circle cx="3.1" cy="6.35" r=".38"/><circle cx="4.9" cy="6.35" r=".38"/><circle cx="6.7" cy="6.35" r=".38"/></g></g></svg><span>English</span></a>
+          <a class="loader__lang" href="pt/" data-lang="pt" lang="pt-BR" hreflang="pt-BR"><svg class="flag" viewBox="0 0 20 14" width="16" height="11" aria-hidden="true" focusable="false"><rect width="20" height="14" rx="2" fill="#12A150"/><path d="M10 2.2 17.6 7 10 11.8 2.4 7Z" fill="#F7D117"/><circle cx="10" cy="7" r="2.9" fill="#1D4FA3"/></svg><span>Português</span></a>
+          <a class="loader__lang" href="es/" data-lang="es" lang="es" hreflang="es"><svg class="flag" viewBox="0 0 20 14" width="16" height="11" aria-hidden="true" focusable="false"><clipPath id="flag-es"><rect width="20" height="14" rx="2"/></clipPath><g clip-path="url(#flag-es)"><rect width="20" height="14" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/></g></svg><span>Español</span></a>
+        </div>
+    <!--/LOADERLANG-->
+      </div>
+
+      <div class="hero__content" id="heroContent">
+        <div class="hero__phrases" id="phrases">
+          <p class="phrase is-active" data-i18n="hero.p1" data-split="words">We bring the right people to your business.</p>
+          <p class="phrase" data-i18n="hero.p2" data-split="words" aria-hidden="true">Your vision. Our strategy. Real growth.</p>
+          <p class="phrase" data-i18n="hero.p3" data-split="words" aria-hidden="true">One team for your site, your ads and your content.</p>
+        </div>
+        <!-- Logo: "Barbelo Agency" é um bloco só (mesma fonte), inteiro na primeira tela -->
+        <h1 class="hero__title hero__logo" aria-label="Barbelo Agency">
+          <span class="hero__brand" data-i18n="hero.brand" data-split="chars">Barbelo</span>
+          <span class="hero__agency" data-i18n="hero.agency" data-split="chars">Agency</span>
+        </h1>
+      </div>
+
+      <div class="hero__ticks" id="ticks" role="group" aria-label="Opening messages">
+        <button class="tick is-active" type="button" data-i="0" aria-label="Show message 1"><i></i></button>
+        <button class="tick" type="button" data-i="1" aria-label="Show message 2"><i></i></button>
+        <button class="tick" type="button" data-i="2" aria-label="Show message 3"><i></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENAS 02 e 03: ponte + projetos. Referência Koto: trilha horizontal, projeto em foco, o resto apagado. -->
+  <section class="work" id="work" aria-label="Work">
+    <!-- Título em bloco próprio (parado). Embaixo, o carrossel dos sites: anda para os dois lados (dedo, setas, arrastar)
+         e a rolagem para cima e para baixo continua a página normalmente (pedido do Henrique, 27/10). -->
+    <div class="work__intro">
+      <h2 class="work__title" data-split="words" data-i18n="work.title">Look first. We’ll explain after.</h2>
+      <p class="work__sub" data-i18n="work.sub">A first look at what we have built, with more on the way.</p>
+    </div>
+    <div class="work__pin">
+      <div class="work__track">
+
+        <!-- Cada site é um painel: o celular toca a gravação do site abrindo (vídeo automático, sem botão), a tela do desktop
+             fica de apoio e há um link para o site de verdade. Para acrescentar outro site: copiar um bloco <article>,
+             trocar o vídeo, a capa, o desktop, o título, o texto e o link (e as chaves em locales/en.js). -->
+        <article class="project project--feature" id="site-dj">
+          <div class="stage">
+            <div class="stage__desk">
+              <a class="site-link" href="https://henriquedoliver.us" target="_blank" rel="noopener" aria-label="Open the Henrique Doliver website (opens in a new tab)"><img src="assets/work/site-dj-desktop.webp" alt="Desktop version of the Henrique Doliver website" width="1440" height="900" data-depth="0.025"><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+            </div>
+            <div class="stage__phone">
+              <a class="site-link site-link--phone" href="https://henriquedoliver.us" target="_blank" rel="noopener" aria-label="Open the Henrique Doliver website (opens in a new tab)"><div class="phone">
+                <div class="phone__screen">
+                  <video id="vidDj" class="phone__video" muted loop playsinline preload="none" poster="assets/work/site-dj-celular-poster.webp" data-src="assets/work/site-dj-celular.mp4" aria-label="Recording of the Henrique Doliver website opening on a phone"></video>
+                </div>
+              </div><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+            </div>
+          </div>
+          <div class="project__info">
+            <h3 class="project__title" data-split="words" data-i18n="p1.title">Henrique Doliver</h3>
+            <div class="project__meta">
+              <p class="project__text" data-i18n="p1.text">A site for a working DJ.</p>
+              <div class="project__actions">
+                <a class="project__link" href="https://henriquedoliver.us" target="_blank" rel="noopener">henriquedoliver.us</a>
+                <button class="sound" type="button" data-sound-for="vidDj" aria-pressed="false" data-i18n="snd.on">Hear the music</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project project--feature" id="site-livro">
+          <div class="stage">
+            <div class="stage__desk">
+              <a class="site-link" href="https://henriquesomeonelikeyou.com" target="_blank" rel="noopener" aria-label="Open the Someone Like You website (opens in a new tab)"><img src="assets/work/site-livro-desktop.webp" alt="Desktop version of the Someone Like You book website" width="1440" height="900" data-depth="0.025"><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+            </div>
+            <div class="stage__phone">
+              <div class="live" data-live="https://henriquesomeonelikeyou.com/" data-title="Someone Like You" data-zoom="1.12"><div class="phone">
+                <div class="phone__screen">
+                  <video id="vidLivro" class="phone__video" muted loop playsinline preload="none" poster="assets/work/site-livro-oficial-poster.webp" data-src="assets/work/site-livro-oficial.mp4" data-restart aria-label="Recording of the Someone Like You book website on a phone, from the loading screen to the end of the page"></video>
+                </div>
+              </div><button class="live__hit" type="button" aria-label="View the Someone Like You website here, live"><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></button></div>
+            </div>
+          </div>
+          <div class="project__info">
+            <h3 class="project__title" data-split="words" data-i18n="p2.title">Someone Like You</h3>
+            <div class="project__meta">
+              <p class="project__text" data-i18n="p2.text">The launch site for a book.</p>
+              <div class="project__actions">
+                <a class="project__link" href="https://henriquesomeonelikeyou.com" target="_blank" rel="noopener">henriquesomeonelikeyou.com</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="work__end">
+          <h3 class="work__title work__title--end" data-split="words" data-i18n="work.end">Yours could be next.</h3>
+          <a class="btn btn--lg" href="#talk" data-scroll-to="#talk" data-contact data-i18n="nav.talk">Let’s Talk</a>
+        </div>
+
+      </div>
+      <div class="work__nav">
+        <div class="work__progress" aria-hidden="true"><span id="workBar"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA 04: serviços. A bolinha da abertura volta e vira a página clara (a única seção clara). -->
+  <section class="what" id="what" aria-label="What we do">
+    <div class="what__pin">
+      <div class="what__dot" aria-hidden="true"></div>
+      <svg class="what__ring" viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="track" cx="50" cy="50" r="48"></circle>
+        <circle class="bar" id="ringBar" cx="50" cy="50" r="48" pathLength="1"></circle>
+      </svg>
+
+      <div class="say say--lead" data-len="1.3">
+        <h2 class="say__title" data-split="words" data-i18n="w0.title">We bring your next customer closer.</h2>
+        <p class="say__sub" data-i18n="w0.p1">We help businesses attract the right audience, turn attention into opportunity, and build meaningful growth.</p>
+        <p class="say__sub" data-i18n="w0.p2">From websites and digital experiences to content, creative campaigns, advertising, and conversion strategies, we bring together the right tools to move your business forward.</p>
+      </div>
+      <div class="say say--in">
+        <h2 class="say__title" data-split="words" data-i18n-html="s1.title">Sites built to turn visitors into <em class="hl">leads.</em></h2>
+        <p class="say__sub" data-i18n="s1.sub">Strategy, design and code with one goal: a stranger becomes a conversation.</p>
+      </div>
+      <div class="say">
+        <h2 class="say__title" data-split="words" data-i18n-html="s2.title">Ads that reach people <em class="hl">ready to buy.</em></h2>
+        <p class="say__sub" data-i18n="s2.sub">Meta Ads built around your offer and your buyer, then tuned with real data.</p>
+      </div>
+      <div class="say say--in">
+        <h2 class="say__title" data-split="words" data-i18n-html="s3.title">Content people <em class="hl">stop for.</em></h2>
+        <p class="say__sub" data-i18n="s3.sub">Organic posts and Reels that earn attention instead of paying for it.</p>
+      </div>
+      <div class="say">
+        <h2 class="say__title" data-split="words" data-i18n-html="s4.title">Funnels with no <em class="hl">leaks.</em></h2>
+        <p class="say__sub" data-i18n="s4.sub">From first click to first message, every step has a job.</p>
+      </div>
+      <div class="say say--in">
+        <h2 class="say__title" data-split="words" data-i18n-html="s5.title"><em class="hl">Strategy</em> first. Pixels second.</h2>
+        <p class="say__sub" data-i18n="s5.sub">We study your business before we open a design file.</p>
+      </div>
+      <div class="say" data-len="0.9">
+        <h2 class="say__title" data-split="words" data-i18n-html="w6.title">Your vision. Our strategy. <em class="hl">Real growth.</em></h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA 05: processo, em linhas gerais (versão pública do método). -->
+  <section class="process" id="process" aria-label="How we work">
+    <div class="process__in">
+      <h2 class="process__title" data-split="words" data-i18n="pr.title">We get you. We do the rest.</h2>
+      <ol class="process__steps" id="steps">
+        <li class="process__line" aria-hidden="true"><span class="process__fill"></span><span class="process__sweep"></span><span class="process__head"></span></li>
+        <li class="step"><span class="step__node" aria-hidden="true"></span><h3 data-i18n="pr.1.t">Listen</h3><p data-i18n="pr.1.p">We start with what makes you unique: your brand, your voice, and your goals.</p></li>
+        <li class="step"><span class="step__node" aria-hidden="true"></span><h3 data-i18n="pr.2.t">Study</h3><p data-i18n="pr.2.p">We study your business, your audience, and your competition.</p></li>
+        <li class="step"><span class="step__node" aria-hidden="true"></span><h3 data-i18n="pr.3.t">Plan</h3><p data-i18n="pr.3.p">We build a clear strategy, tailored to your goals and ready for your approval.</p></li>
+        <li class="step"><span class="step__node" aria-hidden="true"></span><h3 data-i18n="pr.4.t">Make</h3><p data-i18n="pr.4.p">Websites, campaigns, and content. All brought to life by one creative team.</p></li>
+        <li class="step"><span class="step__node" aria-hidden="true"></span><h3 data-i18n="pr.5.t">Measure</h3><p data-i18n="pr.5.p">We track performance, learn from the data, and improve what works.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CENA 06: faixa de celulares (referência Moha, confirmada pela foto do Henrique: bymoha.com, página inicial).
+       Trabalhos e depoimentos no mesmo formato. TUDO ILUSTRATIVO por enquanto (marcado). -->
+  <section class="voices" id="voices" aria-label="Work and client voices">
+    <div class="voices__pin">
+      <h2 class="voices__title" data-split="words" data-i18n="v.title">In their own words.</h2>
+      <div class="voices__track" id="vTrack">
+
+        <article class="vpanel vpanel--ember vpanel--four">
+          <div class="vpanel__phones">
+            <a class="site-link site-link--s" href="https://henriquesomeonelikeyou.com" target="_blank" rel="noopener" aria-label="Open the Someone Like You website (opens in a new tab)"><div class="phone phone--s"><div class="phone__screen"><img class="layer is-on" src="assets/work/site-livro-oficial-poster.webp" alt="The loading screen of the Someone Like You book website on a phone" width="420" height="908" loading="lazy"></div></div><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+            <div class="live" data-live="https://henriquesomeonelikeyou.com/" data-title="Someone Like You" data-zoom="fit"><div class="phone phone--m"><div class="phone__screen"><video class="phone__video" muted loop playsinline preload="none" poster="assets/work/site-livro-oficial-poster.webp" data-src="assets/work/site-livro-oficial.mp4" data-restart aria-hidden="true"></video></div></div><button class="live__hit" type="button" aria-label="View the Someone Like You website here, live"><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></button></div>
+            <a class="site-link" href="https://henriquedoliver.us" target="_blank" rel="noopener" aria-label="Open the Henrique Doliver website (opens in a new tab)"><div class="phone phone--l"><div class="phone__screen"><video class="phone__video" muted loop playsinline preload="none" poster="assets/work/site-dj-celular-poster.webp" data-src="assets/work/site-dj-celular.mp4" aria-hidden="true"></video></div></div><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+            <a class="site-link site-link--s" href="https://henriquedoliver.us" target="_blank" rel="noopener" aria-label="Open the Henrique Doliver website (opens in a new tab)"><div class="phone phone--s"><div class="phone__screen"><img class="layer is-on" src="assets/work/site-dj-celular-poster.webp" alt="The Henrique Doliver website on a phone" width="420" height="908" loading="lazy"></div></div><span class="link-hint" aria-hidden="true"><span class="hint-click" data-i18n="live.view">Click to view the site</span><span class="hint-tap" data-i18n="live.tap">Tap to view the site</span></span></a>
+          </div>
+          <div class="vpanel__text">
+            <p class="vpanel__big" data-i18n="v1.big">Opened from Instagram, the way your customer sees it.</p>
+            <p class="vpanel__by" data-i18n="v1.by">Henrique Doliver and Someone Like You</p>
+          </div>
+        </article>
+
+        <article class="vpanel vpanel--paper" data-ilustrativo>
+          <div class="vpanel__phones">
+            <div class="phone phone--m" data-cycle><div class="phone__screen">
+              <div class="chat layer is-on">
+                <span class="chat__head"><i></i><b data-i18n="m1.who">Client</b></span>
+                <span class="bubble bubble--in" data-i18n="m1.a">Hi! Saw the new creative.</span>
+                <span class="bubble bubble--in" data-i18n="m1.b">People are already asking about it.</span>
+                <span class="bubble bubble--out" data-i18n="m1.c">That was the idea.</span>
+              </div>
+              <div class="chat layer">
+                <span class="chat__head"><i></i><b data-i18n="m1.who">Client</b></span>
+                <span class="bubble bubble--in" data-i18n="m1.d">Can we do the next one this week?</span>
+                <span class="bubble bubble--out" data-i18n="m1.e">Sending the plan today.</span>
+              </div>
+              <span class="phone__veil" aria-hidden="true"></span></div></div>
+            <div class="phone phone--m phone--low"><div class="phone__screen"><img class="layer is-on" src="assets/work/dj-10-home-mobile-como-funciona.webp" alt="" width="390" height="844" loading="lazy"></div></div>
+          </div>
+          <div class="vpanel__text">
+            <p class="vpanel__big" data-i18n="v2.big">“A short message from a client goes here, in their own words.”</p>
+            <p class="vpanel__by" data-i18n="v2.by">Client name, role at company</p>
+          </div>
+          <span class="ilu">ilustrativo</span>
+        </article>
+
+        <article class="vpanel vpanel--accent" data-ilustrativo>
+          <div class="vpanel__phones">
+            <div class="phone phone--m"><div class="phone__screen"><div class="creative creative--ad creative--flat">
+              <span class="creative__tag" data-i18n="c1.tag">Sponsored</span>
+              <span class="creative__big" data-i18n="c1.big">Your offer, right in front of them.</span>
+              <span class="creative__cta" data-i18n="c1.cta">Learn more</span></div></div></div>
+            <div class="phone phone--m phone--low"><div class="phone__screen"><div class="creative creative--reel">
+              <span class="creative__bar"><i></i></span>
+              <span class="creative__big" data-i18n="c2.big">The hook comes in the first second.</span>
+              <span class="creative__handle" data-i18n="c2.handle">@yourbrand</span></div></div></div>
+          </div>
+          <div class="vpanel__text">
+            <p class="vpanel__big" data-i18n="v3.big">Creatives built to stop the scroll.</p>
+            <p class="vpanel__by" data-i18n="v3.by">Ad and Reels examples</p>
+          </div>
+          <span class="ilu">ilustrativo</span>
+        </article>
+
+        <article class="vpanel vpanel--ink" data-ilustrativo>
+          <div class="vpanel__phones">
+            <div class="phone phone--m phone--low" data-cycle><div class="phone__screen">
+              <div class="chat layer is-on">
+                <span class="chat__head"><i></i><b data-i18n="m2.who">Client</b></span>
+                <span class="bubble bubble--in" data-i18n="m2.a">The new page feels like us.</span>
+                <span class="bubble bubble--in" data-i18n="m2.b">And the messages started coming.</span>
+              </div>
+              <div class="chat layer">
+                <span class="chat__head"><i></i><b data-i18n="m2.who">Client</b></span>
+                <span class="bubble bubble--in" data-i18n="m2.c">Thank you for the clarity.</span>
+                <span class="bubble bubble--out" data-i18n="m2.d">Glad to build it with you.</span>
+              </div>
+              <span class="phone__veil" aria-hidden="true"></span></div></div>
+            <div class="phone phone--m"><div class="phone__screen"><img class="layer is-on" src="assets/work/dj-12-home-mobile-after-movies.webp" alt="" width="390" height="844" loading="lazy"></div></div>
+          </div>
+          <div class="vpanel__text">
+            <p class="vpanel__big" data-i18n="v4.big">“Another short message from a client goes here.”</p>
+            <p class="vpanel__by" data-i18n="v4.by">Client name, role at company</p>
+          </div>
+          <span class="ilu">ilustrativo</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CENA 07: "Let's Talk" vertical e animado (referência Playground). A cor de destaque toma a tela a partir do centro. -->
+<footer class="talk" id="talk">
+  <div class="talk__dot" aria-hidden="true"></div>
+  <div class="talk__inner">
+    <div class="talk__copy">
+      <h2 class="talk__title" data-split="words" data-i18n="t.title">Your next customers are already looking.</h2>
+      <p class="talk__sub" data-i18n="t.sub">We don’t show you where your customers are. We bring them to you.</p>
+      <!-- Contato (20/10): os botões com data-contact levam à página lets-talk/ (WhatsApp); ver BB_TALK_URL em locales/*.js. -->
+    </div>
+    <a class="talk__word" id="talkWord" href="#talk" data-contact aria-label="Let’s Talk"><span class="talk__letters" id="talkLetters" aria-hidden="true"></span></a>
+  </div>
+  <div class="talk__foot">
+    <p class="talk__legal">© 2026 Barbelo Agency</p>
+    <!-- botão do rodapé (pedido do Henrique, 20/10): o mesmo botão do menu, em preto com letra laranja, no canto inferior direito,
+         com o símbolo do WhatsApp para a pessoa saber que a conversa é por lá -->
+    <a class="btn btn--ink btn--wa" id="talkCta" href="#talk" data-contact aria-label="Let’s Talk"><svg class="btn__wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.3A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path transform="translate(6.6 6.6) scale(.45)" fill="currentColor" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="nav.talk">Let’s Talk</span></a>
+  </div>
+</footer>
+
+<!-- Barra única, fixa embaixo, enquanto um site está aberto ao vivo dentro do celular -->
+<div class="live-bar" id="liveBar" hidden>
+  <a class="live-chip" id="liveOpen" href="#" target="_blank" rel="noopener"><span data-i18n="live.open">Open in a new tab</span></a>
+  <button class="live-chip" id="liveClose" type="button" data-i18n="live.close">Close</button>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="locales/en.js?v=73"></script>
+<script src="js/i18n.js?v=73"></script>
+<script src="js/text.js?v=73"></script>
+<script src="js/gl-kal.js?v=73"></script>
+<script src="js/main.js?v=73"></script>
+<script src="js/scenes.js?v=73"></script>
+</body>
+</html>
